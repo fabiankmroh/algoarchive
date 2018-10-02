@@ -43,10 +43,16 @@ int empty(queue* p){
 }
 
 int front(queue* p){
+    if(empty(p)){
+        return -1;
+    }
     return p->queue[p->front+1];
 }
 
 int back(queue* p){
+    if(empty(p)){
+        return -1;
+    }
     return p->queue[p->back];
 }
 
