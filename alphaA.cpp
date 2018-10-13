@@ -1,46 +1,40 @@
 #include <stdio.h>
 
 int main(void){
-    char tmpI[100];
+    char inp[200];
     int alphaS;
     int alphaL;
     int numberQ;
     int spaceQ;
     int i;
 
-    while(scanf("%s", tmpI) != '\0'){
+    char* p;
+
+    while(gets(inp) != NULL){
         alphaS = 0;
         alphaL = 0;
         numberQ = 0;
         spaceQ = 0;
+        p = inp;
 
-        i = 0;
-
-        while(tmpI[i] != '\0'){
-
-            /* Small Alphabet */
-            if(tmp[i] >= 97 && tmp[i] <= 122){
+        while(*p != '\0'){
+            if( *p >= 'a' && *p <= 'z' ){
                 alphaS++;
             }
-
-            /* Large Alphabet */
-            else if(tmp[i] >= 65 && tmp[i] <= 90){
+            else if( *p >= 'A' && *p <= 'Z' ){
                 alphaL++;
             }
-
-            /* Number */
-            else if(tmp[i] >= 60 && tmp[i] <= 71){
+            else if( *p >= '0' && *p <= '9' ){
                 numberQ++;
             }
-
-            /* Space */
-            else if(tmp[i] == ' '){
+            else if(*p == ' '){
                 spaceQ++;
             }
 
-            i++;
+            *p++;
         }
 
         printf("%d %d %d %d\n", alphaS, alphaL, numberQ, spaceQ);
+
     }
 }
