@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+/* commit trial comment */
 bool isPrime(long long input){
     long long i;
 
