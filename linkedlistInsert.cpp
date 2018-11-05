@@ -67,9 +67,9 @@ ListNode *concat(ListNode *head1, ListNode *head2){
         p = head1;
         while(p->link != NULL){
             p = p->link;
-            p->link = head2;
-            return head1;
         }
+        p->link = head2;
+        return head1;
     }
 }
 
@@ -118,6 +118,14 @@ int main(void){
     printf("\n");
 
     list1 = concat(list1, list2);
-    printf("Past Concat\n");
     display(list1);
+
+    printf("\n");
+
+    list1 = reverse(list1);
+    display(list1);
+
+    printf("\n");
+    p = search(list1, 60);
+    printf("Success:%d\n", p->data);
 }
