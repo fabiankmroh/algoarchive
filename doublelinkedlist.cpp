@@ -10,6 +10,7 @@ typedef struct DlistNode{
     struct DlistNode *rlink;
 } DlistNode;
 
+
 void init(DlistNode *phead){
     phead->llink = phead;
     phead->rlink = phead;
