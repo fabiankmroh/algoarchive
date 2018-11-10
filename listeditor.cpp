@@ -36,7 +36,7 @@ void insert_node(ListNode **phead, ListNode *p, ListNode *new_node){
         new_node->link = NULL;
         *phead = new_node;
     }
-    else if(p == NULL){
+    else if(p == NULL){      /* why this block ; chester */
         new_node->link = *phead;
         *phead = new_node;
     }
@@ -92,6 +92,7 @@ void add(LinkedListType *list, int position, element data){
 
         list->length++;
     }
+    /* else {  }  handling ; chester */ 
 }
 
 void add_last(LinkedListType *list, element data){
@@ -143,7 +144,7 @@ void display(LinkedListType *buffer){
     printf("*****************\n");
 
     for(i = 0; i < buffer->length; i++){
-        printf("%s",tmp_node->data.a);
+        printf("%.3d: %s", i+1, tmp_node->data.a);
         tmp_node = tmp_node->link;
     }
 
@@ -230,7 +231,8 @@ void insert_line(LinkedListType *buffer){
     element p;
 
     printf("Input Entry Line #  : ");
-    scanf("%d\n", &position);
+    fgets(line,MAX_CHAR_PER_LINE,stdin); /* line input */
+    sscanf(line,"%d",&position); 
 
     printf("Insert Content : ");
     fflush(stdin);
@@ -271,13 +273,15 @@ void do_command(LinkedListType *buffer, char command){
 
 int main(){
     char command;
+    char buf[128];
     LinkedListType buffer;
 
     init(&buffer);
     do{
         help();
-            command = getchar();
+            fgets(buf,128,stdin);
+            sscanf(buf,"%c",&command);
+            fflush(stdin);
             do_command(&buffer, command);
-        fflush(stdin);
     }while(command!= 'q');
 }
